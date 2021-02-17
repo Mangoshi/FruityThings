@@ -1,5 +1,5 @@
 <?php
-define('APP_URL', 'http://localhost/AWDD/bookworms-master');
+define('APP_URL', 'http://localhost/awdd/shopping-cart-website-Mangoshi/');
 define("UPLOAD_DIR", "uploads");
 
 define('DB_SERVER', 'localhost');
