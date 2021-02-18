@@ -40,14 +40,15 @@
               </div>
 
               <div class="form-field">
-                  <label for="role">Role:</label>
-                  <select name="role" id="role" required>
-                      <option value="1">Admin</option>
-                      <option value="4" selected>Customer</option>
-                      <option value="3">Employee</option>
-                      <option value="2">Manager</option>
-                  </select>
-                  <span class="error"><?= error("role") ?></span>
+                  <label for="name">Address:</label>
+                  <textarea name="address" id="address" rows="5"><?= old("address") ?></textarea>
+                  <span class="error"><?= error("address") ?></span>
+              </div>
+
+              <div class="form-field">
+                  <label for="phone">Phone Number:</label>
+                  <input type="text" name="phone" id="phone" value="<?= old("phone") ?>" />
+                  <span class="error"><?= error("phone") ?></span>
               </div>
 
               <div class="form-field">

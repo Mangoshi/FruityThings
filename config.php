@@ -3,7 +3,7 @@ define('APP_URL', 'http://localhost/awdd/shopping-cart-website-Mangoshi/');
 define("UPLOAD_DIR", "uploads");
 
 define('DB_SERVER', 'localhost');
-define('DB_DATABASE', 'bookworms');
+define('DB_DATABASE', 'fruitythings_appstore');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 

@@ -2,6 +2,7 @@
 <?php
 
 use BookWorms\Model\User;
+use BookWorms\Model\Customer;
 use BookWorms\Model\Role;
 
 try {
@@ -9,7 +10,8 @@ try {
         "email" => "present|email|minlength:7|maxlength:64",
         "password" => "present|minlength:8|maxlength:64",
         "name" => "present|minlength:4|maxlength:64",
-        "role" => "present"
+        "address" => "present|minlength:8|maxlength:256",
+        "phone" => "present|minlength:6|maxlength:32"
     ];
     $request->validate($rules);
 
@@ -17,18 +19,25 @@ try {
         $email = $request->input("email");
         $password = $request->input("password");
         $name = $request->input("name");
-        $role_id = $request->input("role");
+        $address = $request->input("address");
+        $phone = $request->input("phone");
+
         $user = User::findByEmail($email);
         if ($user !== null) {
             $request->set_error("email", "Email address is already registered");
-        }
-        else {
+        } else {
             $user = new User();
             $user->email = $email;
             $user->password = password_hash($password, PASSWORD_DEFAULT);
             $user->name = $name;
-            $user->role_id = $role_id;
+            $user->role_id = 4;
             $user->save();
+
+            $customer = new Customer();
+            $customer->address = $address;
+            $customer->phone = $phone;
+            $customer->user_id = $user->id;
+            $customer->save();
         }
     }
 }
