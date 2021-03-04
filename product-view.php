@@ -5,8 +5,26 @@ use BookWorms\Model\Product;
 use BookWorms\Model\Genre;
 use BookWorms\Model\Image;
 
-$products = Product::findAll();
+try {
+    $rules = [
+        'product_id' => 'present|integer|min:1'
+    ];
+    $request->validate($rules);
+    if (!$request->is_valid()) {
+        throw new Exception("Illegal request");
+    }
+    $product_id = $request->input('product_id');
+    $product = Product::findById($product_id);
+    if ($product === null) {
+        throw new Exception("Illegal request parameter");
+    }
+}
+catch (Exception $ex) {
+    $request->session()->set("flash_message", $ex->getMessage());
+    $request->session()->set("flash_message_class", "alert-warning");
 
+    $request->redirect("index.php");
+}
 
 ?>
 <!doctype html>
@@ -14,7 +32,7 @@ $products = Product::findAll();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome to FruityThings</title>
+    <title>Product Listing</title>
 
     <link href="<?= APP_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="<?= APP_URL ?>/assets/css/template.css" rel="stylesheet">
@@ -26,26 +44,12 @@ $products = Product::findAll();
     <?php require 'include/flash.php'; ?>
     <main role="main">
         <div>
-            <h1>Welcome to FruityThings</h1>
-            <p class="lead">
-                Pellentesque orci dui, consectetur non nisi vitae, imperdiet condimentum
-                neque.
-            </p>
-            <p>
-                Cras ullamcorper arcu eget dui consectetur interdum. Cras ac ex ut
-                odio sollicitudin ultrices. Nam dapibus mi dictum tellus dignissim ornare.
-                Quisque scelerisque tellus eu nunc rhoncus aliquet et et quam. Etiam id
-                pretium purus. Aliquam ullamcorper, sapien vitae tempor vulputate, lacus
-                ante sollicitudin leo, nec tempus lacus felis vitae nisi.
-            </p>
             <div class="container">
                 <div>
-                    <h2 class="rowHeading mt-4 mb-2" id="allProducts">Products</h2>
                     <div class="row">
-                        <?php foreach ($products as $product) { ?>
-                            <div class="col-4 mb-4">
-                                <div class="card myCard imageCard shadow-sm">
-                                    <a href="product-view.php?product_id=<?= $product->id ?>" class="lato-light cardTitle">
+                            <div class="col-12 mb-4">
+                                <div class="card">
+                                    <h1 class="cardTitle">
                                         <?= $product->title ?>
                                     <li class="list-group-item">
                                         <?php
@@ -55,11 +59,11 @@ $products = Product::findAll();
                                         }
                                         if ($image !== null){
                                             ?>
-                                            <img src="<?= APP_URL . "actions/" . $image->filename ?>" width="150px" alt="image" />
+                                            <img src="<?= APP_URL . "actions/" . $image->filename ?>" width="500px" alt="image" />
                                             <?php
                                         }
                                         ?>
-                                    </a>
+                                    </h1>
                                     </li>
                                     <div class="card-body">
                                         <p class="card-text"><?= get_words($product->description, 20) ?></p>
@@ -84,11 +88,13 @@ $products = Product::findAll();
 
                                         <li class="list-group-item">
                                             <small> Platforms: </small>
-                                            <?php if($product->on_windows == 1){?> <small>Windows</small> <?php };?>
+                                            <span class="text-muted">
+                                            <?php if($product->on_windows == 1){?> Windows <?php };?>
 
-                                            <?php if($product->on_linux == 1){?> <small>Linux</small> <?php };?>
+                                            <?php if($product->on_linux == 1){?> Linux <?php };?>
 
-                                            <?php if($product->on_mac == 1){?> <small>Mac</small> <?php };?>
+                                            <?php if($product->on_mac == 1){?> Mac <?php };?>
+                                            </span>
                                         </li>
 
                                         <li class="list-group-item">
@@ -115,7 +121,6 @@ $products = Product::findAll();
                                     </ul>
                                 </div>
                             </div>
-                        <?php } ?>
                     </div>
                     <div class="row">
                     </div>

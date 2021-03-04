@@ -149,6 +149,7 @@ public $image_id;
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 while ($row !== FALSE) {
                     $product = new Product();
+                    $product->id = $row['ID'];
                     $product->title = $row['title'];
                     $product->description = $row['description'];
                     $product->price = $row['price'];
@@ -200,7 +201,6 @@ public $image_id;
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 $product = new Product();
-                $product->id = $row['id'];
                 $product->title = $row['title'];
                 $product->description = $row['description'];
                 $product->price = $row['price'];
