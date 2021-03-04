@@ -25,7 +25,7 @@ class Role {
                 $sql = "INSERT INTO roles (title) VALUES (:title)";
             }
             else {
-                $sql = "UPDATE roles SET title = :title WHERE id = :id" ;
+                $sql = "UPDATE roles SET title = :title WHERE ID = :id" ;
                 $params[":id"] = $this->id;
             }
             $stmt = $conn->prepare($sql);
@@ -60,7 +60,7 @@ class Role {
                 $db->open();
                 $conn = $db->get_connection();
 
-                $sql = "DELETE FROM roles WHERE id = :id" ;
+                $sql = "DELETE FROM roles WHERE ID = :id" ;
                 $params = [
                     ":id" => $this->id
                 ];
@@ -132,7 +132,7 @@ class Role {
             $db->open();
             $conn = $db->get_connection();
 
-            $select_sql = "SELECT * FROM roles WHERE id = :id";
+            $select_sql = "SELECT * FROM roles WHERE ID = :id";
             $select_params = [
                 ":id" => $id
             ];
@@ -185,7 +185,7 @@ class Role {
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 $role = new Role();
-                $role->id = $row['id'];
+                $role->id = $row['ID'];
                 $role->title = $row['title'];
             }
         }

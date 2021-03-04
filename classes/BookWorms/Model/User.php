@@ -113,11 +113,11 @@ class User {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 while ($row !== FALSE) {
                     $user = new User();
-                    $user->id = $row['id'];
+                    $user->id = $row['ID'];
                     $user->email = $row['email'];
                     $user->password = $row['password'];
                     $user->name = $row['name'];
-                    $user->role_id = $row['role_id'];
+                    $user->role_id = $row['role_ID'];
                     $users[] = $user;
 
                     $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
