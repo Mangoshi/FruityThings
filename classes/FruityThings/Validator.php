@@ -1,5 +1,5 @@
 <?php
-namespace BookWorms;
+namespace FruityThings;
 
 class Validator {
     private $data = null;

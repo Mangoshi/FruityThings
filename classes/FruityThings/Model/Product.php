@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BookWorms\Model;
+namespace FruityThings\Model;
 
 use PDO;
 use Exception;
@@ -149,7 +149,7 @@ public $image_id;
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 while ($row !== FALSE) {
                     $product = new Product();
-                    $product->id = $row['ID'];
+                    $product->id = $row['id'];
                     $product->title = $row['title'];
                     $product->description = $row['description'];
                     $product->price = $row['price'];
@@ -201,6 +201,7 @@ public $image_id;
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 $product = new Product();
+                $product->id = $row['id'];
                 $product->title = $row['title'];
                 $product->description = $row['description'];
                 $product->price = $row['price'];
@@ -225,7 +226,7 @@ public $image_id;
         return $product;
     }
 
-    public static function findByTagId($genre_id) {
+    public static function findByGenreId($genre_id) {
         $product = null;
 
         try {

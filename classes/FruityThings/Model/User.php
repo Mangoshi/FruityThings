@@ -1,16 +1,15 @@
 <?php
+namespace FruityThings\Model;
 
-namespace BookWorms\Model;
-
-use PDO;
 use Exception;
+use PDO;
 
-class Customer
-{
+class User {
     public $id;
-    public $address;
-    public $phone;
-    public $user_id;
+    public $email;
+    public $password;
+    public $name;
+    public $role_id;
 
     function __construct() {
         $this->id = null;
@@ -23,15 +22,16 @@ class Customer
             $conn = $db->get_connection();
 
             $params = [
-                ":address" => $this->address,
-                ":phone" => $this->phone,
-                ":user_id" => $this->user_id,
+                ":email" => $this->email,
+                ":password" => $this->password,
+                ":name" => $this->name,
+                ":role_id" => $this->role_id
             ];
             if ($this->id === null) {
-                $sql = "INSERT INTO customers (address, phone, user_id) VALUES (:address, :phone, :user_id)";
+                $sql = "INSERT INTO users (email, password, name, role_id) VALUES (:email, :password, :name, :role_id)";
             }
             else {
-                $sql = "UPDATE customers SET address = :address, phone = :phone, user_id = :user_id WHERE ID = :id" ;
+                $sql = "UPDATE users SET email = :email, password = :password, name = :name, role_id = :role_id WHERE id = :id" ;
                 $params[":id"] = $this->id;
             }
             $stmt = $conn->prepare($sql);
@@ -66,8 +66,10 @@ class Customer
                 $db->open();
                 $conn = $db->get_connection();
 
-                $sql = "DELETE FROM customers WHERE id = :id" ;
-                $params[":id"] = $this->id;
+                $sql = "DELETE FROM users WHERE id = :id" ;
+                $params = [
+                    ":id" => $this->id
+                ];
                 $stmt = $conn->prepare($sql);
                 $status = $stmt->execute($params);
 
@@ -90,14 +92,14 @@ class Customer
     }
 
     public static function findAll() {
-        $customers = array();
+        $users = array();
 
         try {
             $db = new DB();
             $db->open();
             $conn = $db->get_connection();
 
-            $select_sql = "SELECT * FROM customers";
+            $select_sql = "SELECT * FROM users";
             $select_stmt = $conn->prepare($select_sql);
             $select_status = $select_stmt->execute();
 
@@ -110,12 +112,13 @@ class Customer
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 while ($row !== FALSE) {
-                    $customer = new Customer();
-                    $customer->id = $row['id'];
-                    $customer->address = $row['address'];
-                    $customer->phone = $row['phone'];
-                    $customer->user_id = $row['user_id'];
-                    $customers[] = $customer;
+                    $user = new User();
+                    $user->id = $row['ID'];
+                    $user->email = $row['email'];
+                    $user->password = $row['password'];
+                    $user->name = $row['name'];
+                    $user->role_id = $row['role_ID'];
+                    $users[] = $user;
 
                     $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                 }
@@ -127,18 +130,18 @@ class Customer
             }
         }
 
-        return $customers;
+        return $users;
     }
 
     public static function findById($id) {
-        $customer = null;
+        $user = null;
 
         try {
             $db = new DB();
             $db->open();
             $conn = $db->get_connection();
 
-            $select_sql = "SELECT * FROM customers WHERE id = :id";
+            $select_sql = "SELECT * FROM users WHERE id = :id";
             $select_params = [
                 ":id" => $id
             ];
@@ -153,11 +156,12 @@ class Customer
 
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-                $customer = new Customer();
-                $customer->id = $row['id'];
-                $customer->address = $row['address'];
-                $customer->phone = $row['phone'];
-                $customer->user_id = $row['user_id'];
+                $user = new User();
+                $user->id = $row['id'];
+                $user->email = $row['email'];
+                $user->password = $row['password'];
+                $user->name = $row['name'];
+                $user->role_id = $row['role_id'];
             }
         }
         finally {
@@ -166,20 +170,20 @@ class Customer
             }
         }
 
-        return $customer;
+        return $user;
     }
 
-    public static function findByUserId($user_id) {
-        $customer = null;
+    public static function findByEmail($email) {
+        $user = null;
 
         try {
             $db = new DB();
             $db->open();
             $conn = $db->get_connection();
 
-            $select_sql = "SELECT * FROM customers WHERE user_id = :user_id";
+            $select_sql = "SELECT * FROM users WHERE email = :email";
             $select_params = [
-                ":user_id" => $user_id
+                ":email" => $email
             ];
             $select_stmt = $conn->prepare($select_sql);
             $select_status = $select_stmt->execute($select_params);
@@ -192,11 +196,12 @@ class Customer
 
             if ($select_stmt->rowCount() !== 0) {
                 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-                $customer = new Customer();
-                $customer->id = $row['id'];
-                $customer->address = $row['address'];
-                $customer->phone = $row['phone'];
-                $customer->user_id = $row['user_id'];
+                $user = new User();
+                $user->id = $row['id'];
+                $user->email = $row['email'];
+                $user->password = $row['password'];
+                $user->name = $row['name'];
+                $user->role_id = $row['role_id'];
             }
         }
         finally {
@@ -205,6 +210,6 @@ class Customer
             }
         }
 
-        return $customer;
+        return $user;
     }
 }

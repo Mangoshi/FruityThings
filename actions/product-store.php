@@ -2,20 +2,20 @@
 require_once '../config.php';
 
 
-use BookWorms\Http\FileUpload;
-use BookWorms\Model\Image;
-use BookWorms\Model\Product;
+use FruityThings\Http\FileUpload;
+use FruityThings\Model\Image;
+use FruityThings\Model\Product;
 
 try {
     $rules = [
         "title" => "present|minlength:2|maxlength:50",
-        "description" => "present|minlength:10|maxlength:512",
+        "description" => "present|minlength:5|maxlength:512",
         "price" => "present|minlength:1|maxlength:32",
         "age_rating" => "present",
         "average_rating" => "present",
         "release_date" => "present",
-        "developer" => "present|minlength:10|maxlength:40",
-        "publisher" => "present|minlength:10|maxlength:40",
+        "developer" => "present|minlength:3|maxlength:40",
+        "publisher" => "present|minlength:3|maxlength:40",
         "genre_id" => "present",
     ];
 

@@ -1,5 +1,5 @@
 <?php
-namespace BookWorms\Model;
+namespace FruityThings\Model;
 
 use PDO;
 

@@ -1,7 +1,7 @@
 <?php
-namespace BookWorms\Http;
+namespace FruityThings\Http;
 
-use BookWorms\Validator;
+use FruityThings\Validator;
 
 class HttpRequest {
     public $method = null;

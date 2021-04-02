@@ -1,9 +1,9 @@
-<?php require_once 'config.php'; ?>
+<?php require_once '../config.php'; ?>
 <?php
 
-use BookWorms\Model\Product;
-use BookWorms\Model\Genre;
-use BookWorms\Model\Image;
+use FruityThings\Model\Product;
+use FruityThings\Model\Genre;
+use FruityThings\Model\Image;
 
 try {
     $rules = [

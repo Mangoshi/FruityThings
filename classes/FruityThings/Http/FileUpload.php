@@ -1,5 +1,5 @@
 <?php
-namespace BookWorms\Http;
+namespace FruityThings\Http;
 
 use Exception;
 

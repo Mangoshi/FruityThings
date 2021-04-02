@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 01:50 PM
+-- Generation Time: Mar 30, 2021 at 05:56 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -77,7 +77,8 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `filename`) VALUES
-(23, 'uploads/1614797237603fd9b59726e.jpg');
+(23, 'uploads/1614797237603fd9b59726e.jpg'),
+(24, 'uploads/16162417576055e45d0a2ca.png');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`ID`, `title`, `description`, `price`, `age_rating`, `average_rating`, `release_date`, `on_windows`, `on_linux`, `on_mac`, `developer`, `publisher`, `genre_id`, `image_id`) VALUES
 (1, 'Test Game', 'Testing testing 123', '9.90', '18+', 'Overwhelmingly Positive', '2021-03-25', 1, 1, 0, 'Test Devs 123', 'Test Pubs 123', 2, NULL),
-(2, 'Test Game 2', 'This one has an image', '1.00', '18+', 'Overwhelmingly Positive', '2021-03-10', 1, 0, 0, 'Lasange Incorporated', 'Lasange Incorporated', 1, 23);
+(2, 'Test Game 2', 'This one has an image', '1.00', '18+', 'Overwhelmingly Positive', '2021-03-10', 1, 0, 0, 'Lasange Incorporated', 'Lasange Incorporated', 1, 23),
+(3, 'Pizza Pasta', 'Yummy yum yum!', '100.00', '3+', 'Overwhelmingly Positive', '2020-09-10', 0, 0, 0, 'Pizza', 'Pasta', 1, 24);
 
 -- --------------------------------------------------------
 
@@ -255,7 +257,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -273,7 +275,7 @@ ALTER TABLE `orders_products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`

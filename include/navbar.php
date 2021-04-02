@@ -24,7 +24,6 @@
                     <a class="nav-link" href="<?= APP_URL ?>views/admin/product-create.php">Add Product</a>
                 </li>
             <?php } ?>
-        </ul>
 
         <ul class="navbar-nav ml-auto">
             <?php if (!$request->session()->has("email")) { ?>
@@ -35,6 +34,9 @@
                     <a class="nav-link" href="<?= APP_URL ?>views/auth/register-form.php">Register</a>
                 </li>
             <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= APP_URL ?>views/cart-view.php">View Cart</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= APP_URL ?>actions/logout.php">Logout</a>
                 </li>

@@ -1,9 +1,9 @@
 <?php require_once 'config.php'; ?>
 <?php
 
-use BookWorms\Model\Product;
-use BookWorms\Model\Genre;
-use BookWorms\Model\Image;
+use FruityThings\Model\Product;
+use FruityThings\Model\Genre;
+use FruityThings\Model\Image;
 
 $products = Product::findAll();
 
@@ -45,41 +45,28 @@ $products = Product::findAll();
                         <?php foreach ($products as $product) { ?>
                             <div class="col-4 mb-4">
                                 <div class="card myCard imageCard shadow-sm">
-                                    <a href="product-view.php?product_id=<?= $product->id ?>" class="lato-light cardTitle">
+                                    <a href="views/product-view.php?product_id=<?= $product->id ?>" class="lato-light cardTitle">
                                         <?= $product->title ?>
-                                    <li class="list-group-item">
-                                        <?php
-                                        try {
-                                            $image = Image::findById($product->image_id);
-                                        } catch (Exception $e) {
-                                        }
-                                        if ($image !== null){
-                                            ?>
-                                            <img src="<?= APP_URL . "actions/" . $image->filename ?>" width="150px" alt="image" />
+                                        <li class="list-group-item">
                                             <?php
-                                        }
-                                        ?>
+                                            try {
+                                                $image = Image::findById($product->image_id);
+                                            } catch (Exception $e) {
+                                            }
+                                            if ($image !== null){
+                                                ?>
+                                                <img src="<?= APP_URL . "actions/" . $image->filename ?>" width="150px" alt="image" />
+                                                <?php
+                                            }
+                                            ?>
+                                        </li>
                                     </a>
-                                    </li>
-                                    <div class="card-body">
-                                        <p class="card-text"><?= get_words($product->description, 20) ?></p>
-                                    </div>
+
+
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <small> Price: </small> <span
                                                     class="text-muted"><?= $product->price ?></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <small> Age rating: </small> <span
-                                                    class="text-muted"><?= $product->age_rating ?></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <small> Average rating: </small><span
-                                                    class="text-muted"><?= $product->average_rating ?></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <small> Release date: </small><span
-                                                    class="text-muted"><?= $product->release_date ?></span>
                                         </li>
 
                                         <li class="list-group-item">
@@ -92,25 +79,24 @@ $products = Product::findAll();
                                         </li>
 
                                         <li class="list-group-item">
-                                            <small> Developer: </small><span
-                                                    class="text-muted"><?= $product->developer ?></span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <small> Publisher: </small><span
-                                                    class="text-muted"><?= $product->publisher ?></span>
-                                        </li>
-                                        <li class="list-group-item">
                                             <small> Genre: </small><span
                                                     class="text-muted"><?php
                                                 try { $genre = Genre::findById($product->genre_id); }
                                                 catch (Exception $e) {}
                                                 if ($genre !== null){
                                                     ?>
-                                                <small><?=$genre->name?></small>
-                                                <?php
+                                                    <small><?=$genre->name?></small>
+                                                    <?php
                                                 }
-                                                    ?>
+                                                ?>
                                             </span>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                            <form method="post" action="<?= APP_URL ?>actions/cart-add.php">
+                                                <input type="hidden" name="id" value="<?= $product->id ?>"/>
+                                                <button type="submit" class="btn btn-secondary">Add to cart</button>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>

@@ -1,9 +1,9 @@
 <?php
 require_once '../config.php';
 
-use BookWorms\Model\User;
-use BookWorms\Model\Customer;
-use BookWorms\Model\Role;
+use FruityThings\Model\User;
+use FruityThings\Model\Customer;
+use FruityThings\Model\Role;
 
 try {
     $rules = [

@@ -1,8 +1,8 @@
 <?php require_once '../config.php'; ?>
 <?php
 
-use BookWorms\Model\User;
-use BookWorms\Model\Role;
+use FruityThings\Model\User;
+use FruityThings\Model\Role;
 
 if ($request->is_logged_in()) {
   $role = $request->session()->get("role");

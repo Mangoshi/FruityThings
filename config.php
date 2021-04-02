@@ -17,7 +17,7 @@ spl_autoload_register(function ($class_name) {
 
 require_once "lib/global.php";
 
-use BookWorms\Http\HttpRequest;
+use FruityThings\Http\HttpRequest;
 
 if (!isset($request)) {
   $request = new HttpRequest();
