@@ -177,6 +177,56 @@ public $image_id;
         return $products;
     }
 
+    public static function findAll_SDLO($sort, $direction, $limit, $offset) {
+        $products = array();
+
+        try {
+            $db = new DB();
+            $db->open();
+            $conn = $db->get_connection();
+
+            $select_sql = "SELECT * FROM products ORDER BY " .$sort. " " .$direction. " LIMIT " .$limit. " OFFSET " .$offset;
+            $select_stmt = $conn->prepare($select_sql);
+            $select_status = $select_stmt->execute();
+
+            if (!$select_status) {
+                $error_info = $select_stmt->errorInfo();
+                $message = "SQLSTATE error code = ".$error_info[0]."; error message = ".$error_info[2];
+                throw new Exception("Database error executing database query: " . $message);
+            }
+
+            if ($select_stmt->rowCount() !== 0) {
+                $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+                while ($row !== FALSE) {
+                    $product = new Product();
+                    $product->id = $row['id'];
+                    $product->title = $row['title'];
+                    $product->description = $row['description'];
+                    $product->price = $row['price'];
+                    $product->age_rating = $row['age_rating'];
+                    $product->average_rating = $row['average_rating'];
+                    $product->release_date = $row['release_date'];
+                    $product->on_windows = $row['on_windows'];
+                    $product->on_linux = $row['on_linux'];
+                    $product->on_mac = $row['on_mac'];
+                    $product->developer = $row['developer'];
+                    $product->publisher = $row['publisher'];
+                    $product->genre_id = $row['genre_id'];
+                    $product->image_id = $row['image_id'];
+                    $products[] = $product;
+                    $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+                }
+            }
+        }
+        finally {
+            if ($db !== null && $db->is_open()) {
+                $db->close();
+            }
+        }
+
+        return $products;
+    }
+
     public static function findById($id) {
         $product = null;
 

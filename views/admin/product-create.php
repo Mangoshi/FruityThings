@@ -13,19 +13,20 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="<?= APP_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="<?= APP_URL ?>/assets/css/mystyle.css" rel="stylesheet">
+    <!-- Stylesheets -->
     <link href="<?= APP_URL ?>/assets/css/form.css" rel="stylesheet">
+    <link href="<?= APP_URL ?>/assets/css/style.css" rel="stylesheet">
 
 </head>
 <body>
-<div class="container">
-    <?php require 'include/navbar.php'; ?>
+<div class="grid">
+    <header>
+        <?php require 'include/navbar.php'; ?>
+    </header>
     <?php require 'include/flash.php'; ?>
-    <main role="main" class="mt-5">
-        <div class="pt-5">
-            <h3>Create Product</h3>
-            <form method="post" action="<?= APP_URL ?>actions/product-store.php" enctype="multipart/form-data">
+    <article role="main" class="article f--jet" style="text-align: center;">
+        <label for="addProductForm" class="form-heading">Create Product</label>
+            <form method="post" action="<?= APP_URL ?>actions/product-store.php" enctype="multipart/form-data" id="addProductForm">
 
                 <label for="title" class="mt-2">Title</label>
                 <div class="form-field">
@@ -39,7 +40,7 @@
                     <span class="error"><?= error("description") ?></span>
                 </div>
 
-                <label for="location" class="mt-2">Price</label>
+                <label for="price" class="mt-2">Price</label>
                 <div class="form-field">
                     <input type="number" name="price" id="price" min="1" step="0.01" value="<?= old('price') ?>"/>
                     <span class="error"><?= error("price") ?></span>
@@ -125,8 +126,7 @@
                     <a href="<?= APP_URL ?>views/admin/home.php">Cancel</a>
                 </div>
             </form>
-        </div>
-    </main>
+    </article>
 </div>
 <script src="<?= APP_URL ?>/assets/js/jquery-3.5.1.min.js"></script>
 <script src="<?= APP_URL ?>/assets/js/bootstrap.bundle.min.js"></script>

@@ -1,15 +1,11 @@
-body {
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-* {
-  box-sizing: border-box;
+.form-heading{
+  margin: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .form-field {
-  margin-bottom: 0.5em;
+  margin: 1rem;
 }
 
 .form-field > label {
@@ -31,13 +27,9 @@ body {
   padding-left: 0.5em;
 }
 
-input#email,
-input#name,
-textarea#address,
-textarea#message,
-input#password,
-input#phone {
-  width: 16em;
+input, textarea {
+  width: 50%;
+  max-width: 50%;
 }
 
 span.error {
