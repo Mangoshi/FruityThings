@@ -13,9 +13,11 @@ $secondLatestProduct = Product::findAll_SDLO("release_date", "DESC", 1, 1);
 $latestTenProducts = Product::findAll_SDLO("release_date", "DESC", 10, 0);
 
 // Steam Rating
-$topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
+$topThreeProducts = Product::findAll_SDLO("average_rating", "ASC", 3, 0);
 
-// Platform
+// Price
+$leastExpensiveThree = Product::findAll_SDLO("price", "ASC", 3, 0);
+$mostExpensiveThree = Product::findAll_SDLO("price", "DESC", 3, 0);
 
 ?>
 <!doctype html>
@@ -86,7 +88,7 @@ $topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
         </div>
         <div class="row_2">
             <div class="row_2--card_section">
-                <h2 class="sub_row--heading f--jet">Top Three</h2>
+                <h2 class="sub_row--heading f--jet">Highest Rating</h2>
                 <div class="row_2--sub_row sub_row_1">
                     <?php foreach ($topThreeProducts as $product) { ?>
                         <div class="small_card">
@@ -107,23 +109,17 @@ $topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
                                 </div>
                             </a>
                             <div class="product_pricing f--jet">
-                                <div class="product_discount">
-                                    <small class=product_discount--text>0%</small>
-                                </div>
-                                <form method="post" action="<?= APP_URL ?>actions/cart-add.php">
-                                    <input type="hidden" name="id" value="<?= $product->id ?>"/>
-                                    <button type="submit" class="addToCartButton">
-                                        <small class="product_cost--text">€<?= $product->price ?></small>
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </form>
+                                <small class=product_discount--text>-0%</small>
+                                <a class="product_cost--text" href="<?= APP_URL ?>actions/cart-add.php?id=<?= $product->id ?>">
+                                    <small>€<?= $product->price ?> <i class="far fa-plus-square"></i></small>
+                                </a>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
-                <h2 class="sub_row--heading f--jet">Top Three</h2>
+                <h2 class="sub_row--heading f--jet">Least Expensive</h2>
                 <div class="row_2--sub_row sub_row_2">
-                    <?php foreach ($topThreeProducts as $product) { ?>
+                    <?php foreach ($leastExpensiveThree as $product) { ?>
                         <div class="small_card">
                             <a href="views/product-view.php?product_id=<?= $product->id ?>" class="product_link--anchor">
                                 <?php
@@ -142,23 +138,17 @@ $topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
                                 </div>
                             </a>
                             <div class="product_pricing f--jet">
-                                <div class="product_discount">
-                                    <small class=product_discount--text>0%</small>
-                                </div>
-                                <form method="post" action="<?= APP_URL ?>actions/cart-add.php">
-                                    <input type="hidden" name="id" value="<?= $product->id ?>"/>
-                                    <button type="submit" class="addToCartButton">
-                                        <small class="product_cost--text">€<?= $product->price ?></small>
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </form>
+                                <small class=product_discount--text>-0%</small>
+                                <a class="product_cost--text" href="<?= APP_URL ?>actions/cart-add.php?id=<?= $product->id ?>">
+                                    <small>€<?= $product->price ?> <i class="far fa-plus-square"></i></small>
+                                </a>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
-                <h2 class="sub_row--heading f--jet">Top Three</h2>
+                <h2 class="sub_row--heading f--jet">Most Expensive</h2>
                 <div class="row_2--sub_row sub_row_3">
-                    <?php foreach ($topThreeProducts as $product) { ?>
+                    <?php foreach ($mostExpensiveThree as $product) { ?>
                         <div class="small_card">
                             <a href="views/product-view.php?product_id=<?= $product->id ?>" class="product_link--anchor">
                                 <?php
@@ -177,16 +167,10 @@ $topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
                                 </div>
                             </a>
                             <div class="product_pricing f--jet">
-                                <div class="product_discount">
-                                    <small class=product_discount--text>0%</small>
-                                </div>
-                                <form method="post" action="<?= APP_URL ?>actions/cart-add.php">
-                                    <input type="hidden" name="id" value="<?= $product->id ?>"/>
-                                    <button type="submit" class="addToCartButton">
-                                        <small class="product_cost--text">€<?= $product->price ?></small>
-                                        <i class="far fa-plus-square"></i>
-                                    </button>
-                                </form>
+                                <small class=product_discount--text>-0%</small>
+                                <a class="product_cost--text" href="<?= APP_URL ?>actions/cart-add.php?id=<?= $product->id ?>">
+                                    <small>€<?= $product->price ?> <i class="far fa-plus-square"></i></small>
+                                </a>
                             </div>
                         </div>
                     <?php } ?>
@@ -223,6 +207,34 @@ $topThreeProducts = Product::findAll_SDLO("average_rating", "DESC", 3, 0);
                 <?php } ?>
             </div>
         </div>
+        <div class="row_3">
+            <h2 class="row_3--heading f--jet">All Products</h2>
+            <?php foreach ($products as $product) { ?>
+            <div class="small_card">
+                <a href="views/product-view.php?product_id=<?= $product->id ?>" class="product_link--anchor">
+                    <?php
+                    try {
+                        $image = Image::findById($product->image_id);
+                    } catch (Exception $e) {
+                    }
+                    if ($image !== null){
+                        ?>
+                        <img src="<?= APP_URL . "actions/" . $image->filename ?>" alt="image" class="medium_thumbnail" />
+                        <?php
+                    }
+                    ?>
+                    <div class="product_title f--source">
+                        <small class="product_title--text"><?= $product->title ?></small>
+                    </div>
+                </a>
+                <div class="product_pricing f--jet">
+                    <small class=product_discount--text>-0%</small>
+                    <a class="product_cost--text" href="<?= APP_URL ?>actions/cart-add.php?id=<?= $product->id ?>">
+                        <small>€<?= $product->price ?> <i class="far fa-plus-square"></i></small>
+                    </a>
+                </div>
+            </div>
+            <?php } ?>
     </article>
     <?php require 'include/footer.php'; ?>
 </div>

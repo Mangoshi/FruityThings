@@ -1,3 +1,14 @@
+.formContainer{
+  grid-column: 2/3;
+  text-align: center;
+}
+
+.form{
+  display: inline-grid;
+  grid-template-columns: min-content;
+  justify-items: center;
+}
+
 .form-heading{
   margin: 1rem;
   font-size: 2rem;
@@ -5,32 +16,46 @@
 }
 
 .form-field {
-  margin: 1rem;
+  margin: .2rem 0 1rem 0;
+  width: 30vw;
 }
 
-.form-field > label {
-  display: inline-block;
-  width: 10em;
-  text-align: right;
-  padding-right: 0.5em;
-  vertical-align: top;
+textarea, input{
+  width: 95%;
+  max-width: 95%;
+  min-width: 95%;
 }
 
-.form-field .checkboxes,
-.form-field .radiobuttons {
-  display: inline-block;
+.form-label {
+
 }
 
-.form-field .checkboxes label,
-.form-field .radiobuttons label {
-  text-align: left;
-  padding-left: 0.5em;
+.imageInput{
+  align-self: end;
 }
 
-input, textarea {
-  width: 50%;
-  max-width: 50%;
+.formSubmitButton{
+  background-color: white;
 }
+
+.formSubmitButton:hover{
+  background-color: black;
+  color: white;
+}
+
+.formCancelButton, .formCancelButton:link, .formCancelButton:visited{
+  color: black;
+  background-color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.formCancelButton:hover{
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+}
+
 
 span.error {
   color: red;

@@ -85,8 +85,12 @@ body {
     line-height: 1.5;
 }
 
-a:visited {
-    color: #cccccc;
+a{
+    color: #ccc;
+}
+
+a:visited{
+    color: #ccc;
 }
 
 a:hover {
@@ -224,7 +228,7 @@ article{
 }
 
 .nav_link:hover {
-    color: #ccc;
+    color: white;
 }
 
 .nav_link:visited {
@@ -329,9 +333,15 @@ article{
     justify-content: space-between;
 }
 
+.medium_thumbnail{
+    height: 30vw;
+    object-fit: cover;
+}
+
 .product_link--anchor{
     display: contents;
     text-align: center;
+    color: #ccc;
 }
 
 .product_title {
@@ -342,10 +352,6 @@ article{
     margin: 0.6vw;
 }
 
-.product_title--text:hover {
-    color: white;
-}
-
 .product_pricing {
     display: flex;
     justify-content: space-between;
@@ -354,11 +360,12 @@ article{
     user-select: none;
 }
 
-.product_discount{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1.3rem;
+.product_pricing a{
+    text-decoration: none;
+}
+
+.product_pricing a:hover i{
+    color: lime;
 }
 
 .row_2--table_section {
@@ -452,6 +459,11 @@ article{
         display: grid;
         grid-template-rows: repeat(6, min-content);
         grid-gap: 1rem;
+    }
+
+    .medium_thumbnail{
+        height: 10vw;
+        object-fit: cover;
     }
     
     .row_2--sub_row{
