@@ -1,3 +1,7 @@
+/* Importing colours.css to make variables available */
+
+@import "colours.css";
+
 .formContainer{
   grid-column: 2/3;
   text-align: center;
@@ -35,29 +39,29 @@ textarea, input{
 }
 
 .formSubmitButton{
-  background-color: white;
+  background-color: var(--white);
 }
 
 .formSubmitButton:hover{
-  background-color: black;
-  color: white;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .formCancelButton, .formCancelButton:link, .formCancelButton:visited{
-  color: black;
-  background-color: white;
+  color: var(--black);
+  background-color: var(--white);
   padding: 0.5rem;
   text-decoration: none;
 }
 
 .formCancelButton:hover{
-  color: white;
-  background-color: black;
+  color: var(--white);
+  background-color: var(--black);
   padding: 0.5rem;
 }
 
 
 span.error {
-  color: red;
+  color: var(--red);
   vertical-align: top;
 }

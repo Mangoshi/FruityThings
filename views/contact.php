@@ -2,25 +2,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Book Worms - Contact us</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="<?= APP_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?= APP_URL ?>/assets/css/template.css" rel="stylesheet">
-    <link href="<?= APP_URL ?>/assets/css/form.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/edca80fe33.js" crossorigin="anonymous"></script>
+
+    <!-- My Stylesheets -->
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/form.css">
+
+    <title>FruityThings</title>
 </head>
 <body>
-<div class="container">
-    <?php require 'include/header.php'; ?>
-    <?php require 'include/navbar.php'; ?>
+<div class="grid">
+    <header>
+        <?php require 'include/navbar.php'; ?>
+    </header>
     <?php require 'include/flash.php'; ?>
-    <main role="main">
-        <div>
-            <h1>Contact us</h1>
-            <div class="row">
-                <div class="col-lg">
-                    <p class="lead">
+    <article role="main" class="article">
+        <div class="f--source" style="text-align: center;">
+            <br>
+            <hr>
+            <h1 class="f--jet">Contact us</h1>
+            <hr>
+            <br>
+            <div>
+                <div>
+                    <p>
                         Aliquam tristique tellus eu diam gravida tempor. Sed tellus
                         velit, scelerisque vel elementum et, dignissim at felis.
                         Integer in aliquet quam, fermentum bibendum lacus. Mauris
@@ -35,6 +51,7 @@
                         scelerisque purus porta eget. Aenean tempus risus vel urna
                         blandit feugiat.
                     </p>
+                    <br>
                     <p>
                         Phasellus nulla lacus, tristique quis sem eu, porta suscipit
                         libero. Nulla pulvinar purus id pellentesque feugiat. Nam sit
@@ -43,70 +60,52 @@
                         viverra nisl et, volutpat velit. Etiam vel bibendum elit.
                         Proin condimentum auctor viverra.
                     </p>
-                    <p>
-                        Nam nibh lectus, faucibus ac maximus id, ultrices sit amet
-                        ex. Praesent faucibus mi et ipsum cursus venenatis at et
-                        ante. Vivamus eu fringilla diam. Sed ac cursus diam, nec
-                        eleifend est. Phasellus convallis placerat orci, vel ornare
-                        est ornare nec. Vestibulum quis dolor eu enim commodo
-                        posuere. Nam ut nunc quis dolor faucibus feugiat. Proin at
-                        quam id nibh blandit eleifend quis eu diam. Maecenas a
-                        tempor diam. Aliquam bibendum magna leo, id fringilla velit
-                        maximus at. Nullam rutrum porta justo, commodo varius orci
-                        vulputate ut. Etiam molestie mauris dolor, ac porttitor erat
-                        varius aliquet. Cras ac lobortis augue. Sed vitae ligula
-                        dignissim, placerat tellus quis, mollis nulla. Aliquam at
-                        nibh odio. Vivamus ultrices, enim quis ullamcorper
-                        consectetur, magna lectus efficitur urna, ac accumsan nisi
-                        lectus et ex.
-                    </p>
+                    <br>
+                    <hr>
                 </div>
-                <div class="col-lg">
-                    <h3>
-                        <img src="<?= APP_URL ?>/assets/img/email.png" width="40px" />
-                        Send us a message
-                    </h3>
-                    <p>
-                        Please use the form below to send us a message, ask
-                        us a question, and our support team will get back to
-                        you as soon as possible.
-                    </p>
-                    <form name='login' action="<?= APP_URL . '/actions/email/email.php' ?>" method="post" enctype="multipart/form-data">
+                <div class="formContainer">
+                    <h1 class="f--jet">Send us a message</h1>
+                    <hr>
+                    <br>
+                    <p>Please use the form below to send us a message.</p>
+                    <p> Ask us a question, and our support team will get back to you as soon as possible.</p>
+                    <br>
+                    <form class="form" name='contact' action="<?= APP_URL . '/actions/email/email.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="form-field">
-                            <label for="name">Name:</label>
-                            <input type="name" name="name" id="name" />
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
                             <span class="error"><?= error("name") ?></span>
                         </div>
                         <div class="form-field">
-                            <label for="email">Email:</label>
+                            <label for="email">Email</label>
                             <input type="text" name="email" id="email" value="<?= old("email") ?>" />
                             <span class="error"><?= error("email") ?></span>
                         </div>
                         <div class="form-field">
-                            <label for="subject">Subject:</label>
+                            <label for="subject">Subject</label>
                             <input type="text" name="subject" id="subject" value="<?= old("subject") ?>" />
                             <span class="error"><?= error("subject") ?></span>
                         </div>
                         <div class="form-field">
-                            <label for="message">Message:</label>
+                            <label for="message">Message</label>
                             <textarea name="message" id="message" rows="5"><?= old("message") ?></textarea>
                             <span class="error"><?= error("message") ?></span>
                         </div>
                         <div class="form-field">
-                            <label for="attachment">Image Attachment:</label>
+                            <label for="attachment">Image Attachment</label>
                             <input type="file" name="attachment" id="attachment" />
                             <span class="error"><?= error("attachment") ?></span>
                         </div>
                         <div class="form-field">
                             <label></label>
-                            <input class="btn btn-primary" type="submit" name="submit" value="Send" />
-                            <a class="btn btn-light" href="<?= APP_URL . "/" ?>" >Cancel</a>
+                            <input class="btn btn-primary" type="submit" name="submit" value="Send" style="margin-bottom: 20px;"/>
+                            <a class="formCancelButton btn btn-light" href="<?= APP_URL . "/" ?>" >Cancel</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </main>
+    </article>
     <?php require 'include/footer.php'; ?>
 </div>
 <script src="<?= APP_URL ?>/assets/js/jquery-3.5.1.min.js"></script>

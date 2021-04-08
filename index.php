@@ -38,8 +38,6 @@ $mostExpensiveThree = Product::findAll_SDLO("price", "DESC", 3, 0);
 
     <!-- My Stylesheets -->
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
-<!--    <link rel="stylesheet" href="--><?//= APP_URL ?><!--/assets/css/bootstrap.min.css"/>-->
-<!--    <link rel="stylesheet" href="--><?//= APP_URL ?><!--/assets/css/template.css">-->
 
     <title>FruityThings</title>
 </head>
