@@ -47,44 +47,44 @@ $cart = Cart::get($request);
             <?php if ($cart->empty()) { ?>
                 <p style="margin-bottom: 70vh;">Your shopping cart is empty.</p>
             <?php } else { ?>
-            <table class="table">
-                <thead>
+                <table class="table">
+                    <thead>
                     <tr>
                         <th>Product</th>
                         <th class="text-right">Price</th>
                         <th class="text-center">Quantity</th>
                         <th class="text-right">Total</th>
                     </tr>
-                </thead>
-                <tbody>
-                <?php
-                $cartTotal = 0;
-                foreach($cart->items as $item) {
-                    $product = $item->product;
-                    $cartTotal += $product->price * $item->quantity;
-                ?>
-                <tr>
-                    <td class="bold"><?= $item->product->title ?></td>
-                    <td class="text-right">€<?=$item->product->price?></td>
-                    <td class="text-center">
-                        <form method="post">
-                            <input type="hidden" name="id" value="<?= $product->id ?>"/>
-                            <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-remove.php">&lt;</button>
-                            <span class="ml-2 mr-2"><?=$item->quantity?></span>
-                            <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-add.php">&gt;</button>
-                        </form>
-                    </td>
-                    <?php $itemTotal = $item->product->price * $item->quantity; ?>
-                    <td class="text-right">€<?= number_format($itemTotal, 2) ?></td>
-                </tr>
-                <?php } ?>
-                <tr>
-                    <th colspan="3">Total</th>
-                    <th class="text-right">€<?=number_format($cartTotal, 2)?></th>
-                </tr>
-                </tbody>
-            </table>
-            <a href="<?= APP_URL ?>/views/cart-checkout.php" class="btn btn-primary" style="margin-bottom: 50vh;">Checkout</a>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $cartTotal = 0;
+                    foreach($cart->items as $item) {
+                        $product = $item->product;
+                        $cartTotal += $product->price * $item->quantity;
+                        ?>
+                        <tr>
+                            <td class="bold"><?= $item->product->title ?></td>
+                            <td class="text-right">€<?=$item->product->price?></td>
+                            <td class="text-center">
+                                <form method="post">
+                                    <input type="hidden" name="id" value="<?= $product->id ?>"/>
+                                    <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-remove.php">&lt;</button>
+                                    <span class="ml-2 mr-2"><?=$item->quantity?></span>
+                                    <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-add.php">&gt;</button>
+                                </form>
+                            </td>
+                            <?php $itemTotal = $item->product->price * $item->quantity; ?>
+                            <td class="text-right">€<?= number_format($itemTotal, 2) ?></td>
+                        </tr>
+                    <?php } ?>
+                    <tr>
+                        <th colspan="3">Total</th>
+                        <th class="text-right">€<?=number_format($cartTotal, 2)?></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="<?= APP_URL ?>/views/cart-checkout.php" class="btn btn-primary" style="margin-bottom: 50vh;">Checkout</a>
             <?php } ?>
         </div>
     </article>

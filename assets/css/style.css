@@ -214,7 +214,7 @@ article{
 
 /* Nav Grid Mobile */
 
-.nav_grid {
+.myNav_grid {
     display: grid;
     grid-template-columns: repeat(3, 150px);
     grid-gap: 10px;
@@ -225,20 +225,20 @@ article{
     padding: 10px;
 }
 
-.nav_grid--fullwidth {
+.myNav_grid--fullwidth {
     grid-column: 1 / 4;
 }
 
 /* Nav Grid Desktop */
 
 @media screen and (min-width: 1000px) {
-    .nav_grid {
+    .myNav_grid {
         grid-template-columns: 1fr repeat(8, min-content);
         grid-gap: 20px;
         justify-items: end;
     }
 
-    .nav_grid--fullwidth {
+    .myNav_grid--fullwidth {
         /* This will make that first Home column only extend from grid line 1 to grid line 2 (on desktop) */
         grid-column: 1 / 2;
         /* This will make Home column display on the left side of the screen (on desktop) */
@@ -248,40 +248,41 @@ article{
 
 /* ~~ END OF RESPONSIVE GRID ~~ */
 
-.nav{
+.myNav{
     background-color: var(--black);
 }
 
-.nav * {
+.myNav * {
     text-decoration: none;
 }
 
-.nav_title {
+.myNav_title {
     font-size: 2rem;
+    margin-left: 1rem;
     color: var(--black);
 }
 
-.nav_title>a:visited {
+.myNav_title>a:visited {
     color: var(--white);
 }
 
-.nav_title>a:hover {
+.myNav_title>a:hover {
     color: var(--orange);
     text-decoration: none;
 }
 
-.nav_link{
-    margin-top: 0.5rem;
+.myNav_link{
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.5rem;
+    line-height: 3rem;
     color: var(--white);
 }
 
-.nav_link:hover {
+.myNav_link:hover {
     color: var(--white);
 }
 
-.nav_link:visited {
+.myNav_link:visited {
     color: var(--white);
 }
 

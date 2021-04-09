@@ -40,7 +40,7 @@ if ($request->is_logged_in()) {
                 <div class="showcase_card--login_register">
                     <div class="showcase_card--title">
                         <i class="fas fa-lemon showcase_card--logo"></i>
-                        <h2 class="f--marker">It's time to get fruity.</h2>
+                        <h2 class="f--marker">It's time to get fruity</h2>
                     </div>
                 </div>
                 <form name="register" action="<?= APP_URL . '/actions/register.php' ?>" method="post" class="login--form f--jet" style="align-self: center;">

@@ -26,25 +26,31 @@ if ($role !== "customer") {
 
       <!-- My Stylesheets -->
       <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
+      <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/form.css">
+      <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/myBootstrap.css">
+      <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/bootstrap.min.css">
 
-      <title>FruityThings</title>
+      <title>FruityThings - Home</title>
   </head>
   <body>
   <div class="grid">
       <header>
           <?php require 'include/navbar.php'; ?>
       </header>
-      <main role="main">
-          <div class="welcomeMessage">
+      <article role="main" class="main f--source">
+          <?php require 'include/flash.php'; ?>
+          <div class="welcomeMessage" style="text-align: center">
               <h1>Customer home</h1>
               <p class="lead">
                   Hello, <?= $request->session()->get("name") ?>
               </p>
+              <?php require 'views/customer/orders/index.php'; ?>
           </div>
-      </main>
+      </article>
       <?php require 'include/footer.php'; ?>
   </div>
     <script src="<?= APP_URL ?>/assets/js/jquery-3.5.1.min.js"></script>
     <script src="<?= APP_URL ?>/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= APP_URL ?>/assets/js/orders.js"></script>
   </body>
 </html>

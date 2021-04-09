@@ -34,13 +34,13 @@ if ($request->is_logged_in()) {
           <?php require 'include/navbar.php'; ?>
       </header>
       <?php require 'include/flash.php'; ?>
-      <main class="main">
+      <main class="main" role="main">
           <section class="section section--login_register">
               <div class="showcase">
                   <div class="showcase_card--login_register">
                       <div class="showcase_card--title">
                           <i class="fas fa-lemon showcase_card--logo"></i>
-                          <h2 class="f--marker">It's time to get fruity.</h2>
+                          <h2 class="f--marker">It's time to get fruity</h2>
                       </div>
                   </div>
                   <form name="login" action="<?= APP_URL . '/actions/login.php' ?>" method="post" class="login--form f--jet" style="align-self: center;">

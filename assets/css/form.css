@@ -38,7 +38,7 @@ textarea, input{
   align-self: end;
 }
 
-.formSubmitButton{
+.formSubmitButton, .formSubmitButton:link, .formSubmitButton:visited{
   background-color: var(--white);
 }
 
@@ -52,6 +52,7 @@ textarea, input{
   background-color: var(--white);
   padding: 0.5rem;
   text-decoration: none;
+  text-align: center;
 }
 
 .formCancelButton:hover{
