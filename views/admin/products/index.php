@@ -14,6 +14,8 @@ $numPages = ceil($numProducts / $pageSize);
         <th>Title</th>
         <th>Price</th>
         <th>Category</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +25,8 @@ $numPages = ceil($numProducts / $pageSize);
             <td><?= $product->title ?></td>
             <td><?= $product->price ?></td>
             <td><?= Genre::findById($product->genre_id)->name ?></td>
+            <td class="text-center"><a href="<?= APP_URL ?>/views/admin/product-update-form.php?id=<?=$product->id?>">❓<a></td>
+            <td class="text-center"><a href="<?= APP_URL ?>/actions/product-delete.php?id=<?=$product->id?>">❌</a></td>
         </tr>
     <?php } ?>
     </tbody>

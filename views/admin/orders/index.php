@@ -1,5 +1,7 @@
 <?php
 use FruityThings\Model\Order;
+use FruityThings\Model\Customer;
+use FruityThings\Model\User;
 
 $orders = Order::findAll();
 $numOrders = count($orders);
@@ -9,17 +11,29 @@ $numPages = ceil($numOrders / $pageSize);
 <table class="table" id="table-orders">
     <thead>
     <tr>
-        <th>Id</th>
+        <th>Order ID</th>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
         <th>Date</th>
         <th>Payment Method</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($orders as $order) { ?>
+    <?php foreach ($orders as $order) {
+        $customerID = $order->customer_id;
+        $customer = Customer::findById($customerID);
+        $user = User::findById($customer->user_id);
+        ?>
         <tr class="d-none">
             <td><?= $order->id ?></td>
+            <td><?= $order->customer_id ?></td>
+            <td><?= $user->name ?></td>
             <td><?= $order->date ?></td>
             <td><?= $order->payment_method ?></td>
+            <td class="text-center"><a href="#">❓<a></td>
+            <td class="text-center"><a href="#">❌</a></td>
         </tr>
     <?php } ?>
     </tbody>

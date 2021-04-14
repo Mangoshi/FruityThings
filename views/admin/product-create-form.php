@@ -1,4 +1,9 @@
-<?php require_once '../../config.php'; ?>
+<?php
+require_once '../../config.php';
+
+use FruityThings\Model\Genre;
+$genres = Genre::findAll();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -114,8 +119,9 @@
             <label for="genre_id" class="form-label"><strong>Genre</strong></label>
             <div class="form-field">
                 <select class="f--source" name="genre_id" id="genre_id">
-                    <option value="1">Action RPG</option>
-                    <option value="2">Roguelike</option>
+                    <?php foreach ($genres as $genre) { ?>
+                    <option value="<?=$genre->id?>"><?=$genre->name?></option>
+                    <?php } ?>
                 </select>
             </div>
 

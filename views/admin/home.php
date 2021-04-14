@@ -30,7 +30,7 @@ if ($role !== "admin") {
       <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/myBootstrap.css">
       <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/bootstrap.min.css">
 
-      <title>FruityThings - Home</title>
+      <title>FruityThings - Admin Home</title>
   </head>
   <body>
   <div class="grid">

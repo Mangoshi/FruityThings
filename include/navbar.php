@@ -2,7 +2,11 @@
 
 <nav class="myNav">
     <ul class="myNav_grid">
-        <li class="myNav_grid--fullwidth myNav_title f--marker"><a href="<?= APP_URL ?>">FruityThings</a></li>
+        <?php if ($role == "customer") { ?>
+        <li class="myNav_grid--fullwidth myNav_title f--marker"><a href="<?= APP_URL ?>/views/customer/home.php">FruityThings</a></li>
+        <?php } else { ?>
+        <li class="myNav_grid--fullwidth myNav_title f--marker"><a href="<?= APP_URL ?>/views/admin/home.php">FruityThings</a></li>
+        <?php } ?>
         <li><a class="myNav_link" href="<?= APP_URL ?>">Store</a></li>
         <li ><a class="myNav_link" href="<?= APP_URL ?>views/about.php">About</a></li>
         <li ><a class="myNav_link" href="<?= APP_URL ?>views/contact.php">Contact</a></li>
@@ -18,7 +22,7 @@
         <?php } ?>
 
         <?php if ($role == "admin") { ?>
-            <li ><a class="myNav_link admin_link" href="<?= APP_URL ?>views/admin/product-create.php">Add.Product</a></li>
+            <li ><a class="myNav_link admin_link" href="<?= APP_URL ?>views/admin/product-create-form.php">Add.P</a></li>
         <?php } ?>
     </ul>
 </nav>
