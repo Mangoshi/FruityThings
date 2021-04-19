@@ -131,6 +131,11 @@ catch (Exception $ex) {
                                             ?>
                                             </span>
                                     </li>
+                                    <li class="list-group-item add-to-cart-item">
+                                        <a class="add-to-cart--text" href="<?= APP_URL ?>actions/cart-add.php?id=<?= $product->id ?>">
+                                            Add To Cart <i class="far fa-plus-square"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

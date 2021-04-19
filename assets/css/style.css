@@ -326,22 +326,67 @@ article{
 }
 
 .showcase_card--login_register{
-    background-color: #eeeeee;
+    background-color: var(--lighterGrey);
     border: 2rem solid black;
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: calc(600px - 8rem);
+    transition: 0.5s;
 }
 
-.showcase_card--logo{
-    font-size: 10rem;
-    margin: 4rem 0 1rem 0;
+.showcase_card--login_register:hover{
+    background-color: var(--black);
+    border: 2rem solid var(--orange);
+}
+
+.showcase_card--login_register:hover *{
+    color: var(--orange);
 }
 
 .showcase_card--title{
     font-size: 2rem;
     margin-bottom: 2rem;
+}
+
+.showcase_card--logo{
+    font-size: 10rem;
+    margin: 4rem 0 1rem 0;
+    animation: yoyo 5s infinite;
+    transition: 1s;
+}
+
+.showcase_card--logo:hover {
+    color: orange;
+}
+
+@keyframes yoyo {
+    0%{
+        font-size: 10rem;
+    }
+    50%{
+        font-size: 12rem;
+    }
+    100%{
+        font-size: 10rem;
+    }
+}
+
+.showcase_card--title h2{
+    animation: yoyo-offset 5s infinite;
+}
+
+@keyframes yoyo-offset {
+    0%{
+        margin-top: 2rem;
+    }
+    50%{
+        margin-top: 0;
+    }
+    100%{
+        margin-top: 2rem;
+    }
 }
 
 .login--form, .register--form{
@@ -798,4 +843,35 @@ article{
     .footer--social_list{
         font-size: 2rem;
     }
+}
+
+.add-to-cart-item{
+    text-align: center;
+}
+
+.add-to-cart--text{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.add-to-cart--text i{
+    color: var(--black);
+}
+
+.add-to-cart--text:visited{
+    color: var(--black);
+}
+
+.add-to-cart--text:visited i{
+    color: var(--black);
+}
+
+.add-to-cart--text:hover{
+    text-decoration: none;
+    color: var(--black);
+}
+
+.add-to-cart--text:hover i{
+    color: var(--lime);
 }
