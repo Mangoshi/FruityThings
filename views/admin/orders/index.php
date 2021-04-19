@@ -16,8 +16,6 @@ $numPages = ceil($numOrders / $pageSize);
         <th>Customer Name</th>
         <th>Date</th>
         <th>Payment Method</th>
-        <th>UPDATE</th>
-        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
@@ -32,8 +30,6 @@ $numPages = ceil($numOrders / $pageSize);
             <td><?= $user->name ?></td>
             <td><?= $order->date ?></td>
             <td><?= $order->payment_method ?></td>
-            <td class="text-center"><a href="#">❓<a></td>
-            <td class="text-center"><a href="#">❌</a></td>
         </tr>
     <?php } ?>
     </tbody>

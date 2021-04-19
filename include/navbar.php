@@ -20,9 +20,5 @@
             <?php } ?>
             <li><a class="myNav_link" href="<?= APP_URL ?>actions/logout.php">Logout</a></li>
         <?php } ?>
-
-        <?php if ($role == "admin") { ?>
-            <li ><a class="myNav_link admin_link" href="<?= APP_URL ?>views/admin/product-create-form.php">Add.P</a></li>
-        <?php } ?>
     </ul>
 </nav>

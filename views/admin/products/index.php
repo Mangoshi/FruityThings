@@ -31,6 +31,9 @@ $numPages = ceil($numProducts / $pageSize);
     <?php } ?>
     </tbody>
 </table>
+<ul class="pagination justify-content-center" style="font-size: 1.5rem">
+    <li><a href="<?= APP_URL ?>views/admin/product-create-form.php">Add Product</a></li>
+</ul>
 <nav id="nav-products">
     <ul class="pagination justify-content-center">
         <li class="page-item">

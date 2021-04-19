@@ -14,8 +14,6 @@ $numPages = ceil($numCustomers / $pageSize);
         <th>Name</th>
         <th>Address</th>
         <th>Phone</th>
-        <th>UPDATE</th>
-        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
@@ -25,8 +23,6 @@ $numPages = ceil($numCustomers / $pageSize);
             <td><?= User::findById($customer->user_id)->name ?></td>
             <td><?= $customer->address ?></td>
             <td><?= $customer->phone ?></td>
-            <td class="text-center"><a href="#">❓<a></td>
-            <td class="text-center"><a href="#">❌</a></td>
         </tr>
     <?php } ?>
     </tbody>

@@ -13,15 +13,15 @@ $numPages = ceil($numOrders / $pageSize);
 <table class="table" id="table-orders">
     <thead>
     <tr>
-        <th>Id</th>
+        <th>Order Number</th>
         <th>Date</th>
         <th>Payment Method</th>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($orders as $order) { ?>
+    <?php foreach ($orders as $index=>$order) { ?>
         <tr class="d-none">
-            <td><?= $order->id ?></td>
+            <td><?= $index+1 ?></td>
             <td><?= $order->date ?></td>
             <td><?= $order->payment_method ?></td>
         </tr>

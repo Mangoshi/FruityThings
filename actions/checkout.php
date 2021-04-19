@@ -41,6 +41,7 @@ try {
     $request->session()->set("flash_message_class", "alert-info");
 
     $cart->empty();
+    unset($_SESSION['cart']);
     $request->redirect("/views/customer/home.php");
 
 } catch(Exception $ex) {
