@@ -72,4 +72,12 @@ try {
     $request->session()->set("flash_errors", $request->errors());
 
     $request->redirect("/views/contact.php");
+} catch (\Exception $e) {
+    $request->session()->set("flash_message", "Message could not be sent. No image attached!");
+    $request->session()->set("flash_message_class", "alert-warning");
+
+    $request->session()->set("flash_data", $request->all());
+    $request->session()->set("flash_errors", $request->errors());
+
+    $request->redirect("/views/contact.php");
 }

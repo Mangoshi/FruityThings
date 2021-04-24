@@ -18,6 +18,7 @@
     <!-- My Stylesheets -->
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/form.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/myBootstrap.css">
 
     <title>FruityThings</title>
 </head>
@@ -26,8 +27,8 @@
     <header>
         <?php require 'include/navbar.php'; ?>
     </header>
-    <?php require 'include/flash.php'; ?>
     <article role="main" class="article">
+        <?php require 'include/flash.php'; ?>
         <div class="f--source" style="text-align: center;">
             <br>
             <hr>
