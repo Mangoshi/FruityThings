@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 07:50 PM
+-- Generation Time: Apr 24, 2021 at 04:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -40,8 +40,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `address`, `phone`, `user_id`) VALUES
 (1, '123 Admin Lane,\r\nAdmin City,\r\nCo. Adminton,\r\nAdminland', '012-345-6789', 1),
-(2, '321 Customer Lane,\r\nCustomer City,\r\nCo. Custo,\r\nCustland', '123-456-7891', 2),
-(3, 'Test House,\r\nTest Town,\r\nTest County,\r\nTest Country', '012-345-6789', 3);
+(2, '321 Customer Lane,\r\nCustomer City,\r\nCo. Custo,\r\nCustland', '123-456-7891', 2);
 
 -- --------------------------------------------------------
 
@@ -262,8 +261,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `role_id`) VALUES
 (1, 'admin@test.ie', '$2y$10$Y6DwtMSCc.IFl7deJVhA/ur6klE/bKgqXcAkE.VJ4ZgYwzkyQH8dW', 'Seán Óg', 1),
-(2, 'customer@test.ie', '$2y$10$ltZHrBX2cV8C88Mnzqe/8ecgfIKmRL3yK83Ah4dIrlvloqPqA.Qj2', 'Mr. Customer', 4),
-(3, 'test_customer@test.ie', '$2y$10$dnzFO.jN01Ta6pX8hoLHjOtQGrGUiFRNNurXSXDYrmnt72gAD03vu', 'Test Customer', 4);
+(2, 'customer@test.ie', '$2y$10$ltZHrBX2cV8C88Mnzqe/8ecgfIKmRL3yK83Ah4dIrlvloqPqA.Qj2', 'Mr. Customer', 4);
 
 --
 -- Indexes for dumped tables

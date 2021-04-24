@@ -1,0 +1,9 @@
+Admin
+-----
+email: admin@test.ie
+password: adminadmin
+
+Customer
+--------
+email: customer@test.ie
+password: customercustomer
