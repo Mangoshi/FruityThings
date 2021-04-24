@@ -29,5 +29,3 @@ try {
 
     $request->redirect("views/admin/home.php");
 }
-
-

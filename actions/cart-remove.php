@@ -1,5 +1,4 @@
-<?php require_once '../config.php'; ?>
-<?php
+<?php require_once '../config.php';
 
 if ($request->is_logged_in()) {
     $role = $request->session()->get("role");
@@ -31,7 +30,7 @@ try {
     $cart = Cart::get($request);
     $cart->remove($product, 1);
 
-    $request->session()->set("flash_message", "A copy of '".$product->title."' was added to your cart.");
+    $request->session()->set("flash_message", "A copy of '".$product->title."' was removed from your cart.");
     $request->session()->set("flash_message_class", "alert-info");
 
     $request->redirect("views/cart-view.php");
@@ -42,4 +41,3 @@ try {
 
     $request->redirect("/");
 }
-?>

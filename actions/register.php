@@ -62,4 +62,3 @@ try {
     $request->redirect("/views/auth/register-form.php");
 
 }
-?>

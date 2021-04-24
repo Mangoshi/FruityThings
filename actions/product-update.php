@@ -77,4 +77,3 @@ try {
 
     $request->redirect("views/admin/product-update-form.php?=".$id);
 }
-?>

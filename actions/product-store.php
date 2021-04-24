@@ -1,7 +1,6 @@
 <?php
 require_once '../config.php';
 
-
 use FruityThings\Http\FileUpload;
 use FruityThings\Model\Image;
 use FruityThings\Model\Product;
@@ -69,4 +68,3 @@ try {
 
     $request->redirect("views/admin/product-create.php");
 }
-?>

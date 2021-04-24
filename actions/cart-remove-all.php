@@ -1,5 +1,4 @@
-<?php require_once '../config.php'; ?>
-<?php
+<?php require_once '../config.php';
 
 if ($request->is_logged_in()) {
     $role = $request->session()->get("role");
@@ -42,4 +41,3 @@ try {
 
     $request->redirect("/");
 }
-?>

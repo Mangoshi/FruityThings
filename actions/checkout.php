@@ -53,4 +53,3 @@ try {
     $request->redirect("/views/cart-checkout.php");
 
 }
-?>
