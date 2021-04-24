@@ -23,7 +23,7 @@ class FileUpload {
       $this->destination = UPLOAD_DIR;
     }
     else {
-      $this->destination = rtrim($destination, DIRECTORY_SEPARATOR);;
+      $this->destination = rtrim($destination, DIRECTORY_SEPARATOR);
     }
     $this->maxSize = 1 * 5120 * 5120; // 5 MB
     $this->allowedExtensions = array("jpg", "jpeg", "png", "gif");
@@ -170,5 +170,3 @@ class FileUpload {
     }
   }
 }
-
-?>

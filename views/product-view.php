@@ -1,5 +1,4 @@
-<?php require_once '../config.php'; ?>
-<?php
+<?php require_once '../config.php';
 
 use FruityThings\Model\Product;
 use FruityThings\Model\Genre;
@@ -103,11 +102,11 @@ catch (Exception $ex) {
                                     <li class="list-group-item">
                                         <small> Platforms: </small>
                                         <span class="text-muted">
-                                            <?php if($product->on_windows = 1){?> Windows <?php };?>
+                                            <?php if($product->on_windows = 1){?> Windows <?php } ?>
 
-                                            <?php if($product->on_linux = 1){?> Linux <?php };?>
+                                            <?php if($product->on_linux = 1){?> Linux <?php } ?>
 
-                                            <?php if($product->on_mac = 1){?> Mac <?php };?>
+                                            <?php if($product->on_mac = 1){?> Mac <?php } ?>
                                             </span>
                                     </li>
 

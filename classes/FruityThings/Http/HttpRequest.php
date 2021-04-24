@@ -120,4 +120,3 @@ class HttpRequest {
         exit();
     }
 }
-?>

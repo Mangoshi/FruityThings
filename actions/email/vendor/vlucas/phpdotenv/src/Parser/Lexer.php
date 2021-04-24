@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Dotenv\Parser;
 
+use Error;
+use Generator;
+use function implode;
+use function preg_match;
+use function sprintf;
+use function strlen;
+
 final class Lexer
 {
     /**
@@ -35,14 +42,14 @@ final class Lexer
      *
      * @param string $content
      *
-     * @return \Generator<string>
+     * @return Generator<string>
      */
     public static function lex(string $content)
     {
         static $regex;
 
         if ($regex === null) {
-            $regex = '(('.\implode(')|(', self::PATTERNS).'))A';
+            $regex = '(('. implode(')|(', self::PATTERNS).'))A';
         }
 
         $tokens = [];
@@ -50,11 +57,11 @@ final class Lexer
         $offset = 0;
 
         while (isset($content[$offset])) {
-            if (!\preg_match($regex, $content, $matches, 0, $offset)) {
-                throw new \Error(\sprintf('Lexer encountered unexpected character [%s].', $content[$offset]));
+            if (!preg_match($regex, $content, $matches, 0, $offset)) {
+                throw new Error(sprintf('Lexer encountered unexpected character [%s].', $content[$offset]));
             }
 
-            $offset += \strlen($matches[0]);
+            $offset += strlen($matches[0]);
 
             yield $matches[0];
         }

@@ -1,4 +1,3 @@
-
 <footer class="footer f--source">
     <div class="footer--about_section">
         <h3 class="footer--about_heading f--jet">About</h3>

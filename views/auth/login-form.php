@@ -1,5 +1,5 @@
-<?php require_once '../../config.php'; ?>
-<?php
+<?php require_once '../../config.php';
+
 if ($request->is_logged_in()) {
   $role = $request->session()->get("role");
   $request->redirect("/views"."/".$role."/home.php");

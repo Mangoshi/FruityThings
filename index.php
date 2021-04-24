@@ -1,8 +1,6 @@
-<?php require_once 'config.php'; ?>
-<?php
+<?php require_once 'config.php';
 
 use FruityThings\Model\Product;
-use FruityThings\Model\Genre;
 use FruityThings\Model\Image;
 
 $products = Product::findAll();
