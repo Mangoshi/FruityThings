@@ -29,9 +29,9 @@ try {
     }
 
     $cart = Cart::get($request);
-    $cart->remove($product, 1);
+    $cart->set($product, 0);
 
-    $request->session()->set("flash_message", "A copy of '".$product->title."' was added to your cart.");
+    $request->session()->set("flash_message", "All instances of '".$product->title."' were removed from your cart.");
     $request->session()->set("flash_message_class", "alert-info");
 
     $request->redirect("views/cart-view.php");

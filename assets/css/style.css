@@ -259,7 +259,10 @@ article{
 .myNav_title {
     font-size: 2rem;
     margin-left: 1rem;
-    color: var(--black);
+}
+
+.myNav_title>a {
+    color: var(--white);
 }
 
 .myNav_title>a:visited {
@@ -271,18 +274,22 @@ article{
     text-decoration: none;
 }
 
+.nav_logo{
+    margin-right: 0.5rem;
+}
+
 .myNav_link{
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.5rem;
     line-height: 3rem;
-    color: var(--white);
-}
-
-.myNav_link:hover {
-    color: var(--white);
+    color: var(--lightGrey);
 }
 
 .myNav_link:visited {
+    color: var(--lightGrey);
+}
+
+.myNav_link:hover {
     color: var(--white);
 }
 
@@ -333,7 +340,6 @@ article{
     flex-direction: column;
     justify-content: center;
     height: calc(600px - 8rem);
-    transition: 0.5s;
 }
 
 .showcase_card--title{
@@ -525,7 +531,6 @@ article{
 .product_title {
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: initial;
     font-size: 4vw;
     margin: 0.6vw;
 }

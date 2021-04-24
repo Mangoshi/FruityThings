@@ -39,7 +39,7 @@ if ($role !== "customer") {
       </header>
       <article role="main" class="main f--source">
           <?php require 'include/flash.php'; ?>
-          <div class="welcomeMessage" style="text-align: center">
+          <div class="welcomeMessage" style="text-align: center; margin-bottom: 60vh">
               <h1>Customer home</h1>
               <p class="lead">
                   Hello, <?= $request->session()->get("name") ?>

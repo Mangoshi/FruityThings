@@ -67,11 +67,12 @@ $cart = Cart::get($request);
                             <td class="bold"><?= $item->product->title ?></td>
                             <td class="text-right">€<?=$item->product->price?></td>
                             <td class="text-center">
-                                <form method="post">
+                                <form method="post" style="margin-left: 3rem;">
                                     <input type="hidden" name="id" value="<?= $product->id ?>"/>
                                     <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-remove.php">&lt;</button>
                                     <span class="ml-2 mr-2"><?=$item->quantity?></span>
                                     <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-add.php">&gt;</button>
+                                    <button class="btn btn-light" type="submit" formaction="<?= APP_URL ?>/actions/cart-remove-all.php">✖</button>
                                 </form>
                             </td>
                             <?php $itemTotal = $item->product->price * $item->quantity; ?>
@@ -84,7 +85,15 @@ $cart = Cart::get($request);
                     </tr>
                     </tbody>
                 </table>
+            <?php if ($role == "customer") { ?>
                 <a href="<?= APP_URL ?>/views/cart-checkout.php" class="btn btn-primary" style="margin-bottom: 50vh;">Checkout</a>
+            <?php } else { ?>
+                <p style="margin-bottom: 1rem">Please log in or register to checkout!</p>
+                <a href="<?= APP_URL ?>/views/auth/login-form.php" class="btn btn-primary" style="margin-bottom: 50vh;">Login</a>
+                <a href="<?= APP_URL ?>/views/auth/register-form.php" class="btn btn-primary" style="margin-bottom: 50vh;">Register</a>
+            <?php } } ?>
+            <?php if (!$cart->empty()) { ?>
+            <a href="<?= APP_URL ?>/actions/cart-clear.php" class="btn btn-info" style="margin-bottom: 50vh;">Clear Cart</a>
             <?php } ?>
         </div>
     </article>

@@ -2,7 +2,7 @@
 
 <nav class="myNav">
     <ul class="myNav_grid">
-        <li class="myNav_grid--fullwidth myNav_title f--marker"><a href="<?= APP_URL ?>/index.php">FruityThings</a></li>
+        <li class="myNav_grid--fullwidth myNav_title f--marker"><a href="<?= APP_URL ?>/index.php"><i class="fas fa-lemon nav_logo"></i>FruityThings</a></li>
         <li><a class="myNav_link" href="<?= APP_URL ?>">Store</a></li>
         <li ><a class="myNav_link" href="<?= APP_URL ?>views/about.php">About</a></li>
         <li ><a class="myNav_link" href="<?= APP_URL ?>views/contact.php">Contact</a></li>
